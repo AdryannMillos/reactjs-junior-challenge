@@ -26,7 +26,7 @@ function checkEmail(email) {
   if (email.length == 0) {
     throw new Error("Email can not be empty!");
   }
-  if (email.indexOf("@") !== -1 || email.indexOf(".") !== -1) {
+  if (email.indexOf("@") == -1 || email.indexOf(".") == -1) {
     throw new Error("Invalid Email!");
   }
   return email;

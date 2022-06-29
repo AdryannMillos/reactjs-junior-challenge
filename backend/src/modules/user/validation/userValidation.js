@@ -16,10 +16,7 @@ function checkUserName(userName) {
   if (userName.length == 0 || userName.length > 8) {
     throw new Error("User name must be between 0 and 8 characters!");
   }
-  if (userName.length > 0 && userName.length < 8) {
     return userName;
-  }
-  throw new Error("Invalid User Name!");
 }
 
 function checkEmail(email) {
@@ -41,8 +38,8 @@ function checkPassword(password, confirmPassword) {
   if (password !== confirmPassword) {
     throw new Error("Password and Confirm Password must match!");
   }
-  if (password.length == 0 || password.length > 8) {
-    throw new Error("Password must be between 0 and 8 characters!");
+  if (password.length < 4 || password.length > 8) {
+    throw new Error("Password must be between 4 and 8 characters!");
   }
   if (
     containsNumber.test(password) == false ||
@@ -59,4 +56,7 @@ function checkPassword(password, confirmPassword) {
 
 module.exports = {
   validate,
+  checkUserName,
+  checkEmail,
+  checkPassword,
 };

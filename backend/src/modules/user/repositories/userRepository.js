@@ -14,6 +14,8 @@ const destroy = async (userId) =>
 
 const getByFilters = async (user) => await Models.User.findOne(user);
 
+const destroyByFilters = async (user) => await Models.User.destroy(user);
+
 module.exports = {
   findByPk,
   create,
@@ -21,4 +23,5 @@ module.exports = {
   destroy,
   update,
   getByFilters,
+  destroyByFilters
 };

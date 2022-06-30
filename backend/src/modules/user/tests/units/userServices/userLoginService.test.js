@@ -9,6 +9,7 @@ describe("Post login a user", () => {
     user = await userCreate.execute("adaryab", previousEmail, "123Ab!");
 
     await expect(execute(previousEmail, "123Ab!")).resolves;
+    await expect(execute('adaryab', "123Ab!")).resolves;
   });
 
   test("should return a Email, User Name or password not found", async () => {

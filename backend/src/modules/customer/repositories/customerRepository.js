@@ -12,9 +12,11 @@ const update = async (customer, id) =>
 const destroy = async (id) =>
   await Models.Customer.destroy({ where: { id: id } });
 
-const getByFilters = async (customer) => await Models.Customer.findOne(customer);
+const getByFilters = async (customer) =>
+  await Models.Customer.findOne(customer);
 
-const destroyByFilters = async (customer) => await Models.Customer.destroy(customer);
+const destroyByFilters = async (customer) =>
+  await Models.Customer.destroy(customer);
 
 module.exports = {
   findByPk,
@@ -23,5 +25,5 @@ module.exports = {
   destroy,
   update,
   getByFilters,
-  destroyByFilters
+  destroyByFilters,
 };

@@ -8,9 +8,27 @@ async function index(req, res) {
   try {
     const userId = req.user.id;
 
-    const users = await customerReadService.execute(userId);
+    let { page, size } = req.query;
+    if (!page) {
+      page = 1;
+    }
+    if (!size) {
+      size = 5;
+    }
 
-    return res.status(200).json(users);
+    const limit = parseInt(size);
+    const skip = (page - 1) * size;
+
+    const customers = await customerReadService.execute(userId, limit, skip);
+    const numberOfPages = Math.ceil(customers[1] / size);
+    return res
+      .status(200)
+      .json({
+        actualPage: page,
+        size: size,
+        numberOfPages: numberOfPages,
+        customers: customers[0],
+      });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -9,7 +9,7 @@ async function index(req, res) {
     const userId = req.user.id;
 
     const users = await customerReadService.execute(userId);
-    console.log(true);
+
     return res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -41,8 +41,7 @@ async function store(req, res) {
 async function update(req, res) {
   try {
     const validated = await customerValidation.validate(req.body);
-    const userId = req.user.id;
-    const customerId = req.params.id
+    const customerId = req.params.id;
 
     await customerUpdateService.execute(
       customerId,
@@ -63,7 +62,7 @@ async function update(req, res) {
 
 async function destroy(req, res) {
   try {
-    const customerId = req.params.id
+    const customerId = req.params.id;
 
     await customerDeleteService.execute(customerId);
 
